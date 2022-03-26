@@ -1,0 +1,127 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="container border p-3 mt-5">
+        <form [formGroup]="loginForm" (ngSubmit)="fun()"  class="row g-3 bg-light">
+
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">User Name:</label>
+                <input type="text" name="username"  class="form-control" formControlName="username" >
+                <span style="color: crimson;" *ngIf="username && username.invalid && username.touched">
+                    <span *ngIf="username?.errors?.['required']"> User Name is required</span>
+                </span>
+            </div>
+
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Password:</label>
+                <div class="eye-1">
+                    <input type="password" [type]="hide ? 'password': 'text' "  name="password" class="form-control" formControlName="password">
+                    <span class="eye mt-2"><i class="fa fa-eye" (click)="hide = !hide"></i></span>
+                    <span style="color: crimson;" *ngIf="password && password.invalid && password.touched">
+                        <span *ngIf="password?.errors?.['required']"> Password is required</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email:</label>
+                    <input type="text" name="email" class="form-control" formControlName="email">
+                    <span style="color: crimson;" *ngIf="email && email.invalid && email.touched">Email is required </span>
+
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Mobile:</label>
+                    <input type="text" name="mobile" class="form-control" formControlName="mobile">
+                    <span style="color: crimson;" *ngIf="mobile && mobile.invalid && mobile.touched">Mobile is required
+                    </span>
+            </div>
+
+            <div class="col-md-6 ">
+                <span class="Gender">Gender:</span><br>
+                <input type="radio" name="radio" value="Male" id="defaultCheck11" formControlName="radio">
+                <label class="form-check-label" for="defaultCheck11">Male:</label><br>
+
+                <input type="radio" name="radio" value="Female" id="defaultCheck12" formControlName="radio">
+                <label class="form-check-label" for="defaultCheck12">Female:</label>
+
+                <span *ngIf="radio?.invalid && radio?.touched" class="span">Radio Button is required</span>
+                                        
+            </div>
+
+            <div class="col-md-6 ">
+                <div class="hobby">Hobby:</div>
+                    <div class="form-check">
+                        <div class="Cricket mt-2">
+                            <input class="form-check-input" type="checkbox" name="cricket" id="defaultCheck1" value="cricket" formControlName="cricket">
+                                <label class="form-check-label" for="defaultCheck1">
+                                     Cricket
+                                </label>
+                                <span style="color: crimson;" *ngIf="cricket && cricket.invalid && cricket.touched">Email is required </span>
+
+                                
+                        </div>
+                        <div class="Football">
+                            <input class="form-check-input" type="checkbox" name="football" id="defaultCheck2" value="football" formControlName="football">
+                                 <label class="form-check-label" for="defaultCheck2">
+                                    Football
+                                </label>
+                                <span style="color: crimson;" *ngIf="football && football.invalid && football.touched">Email is required </span>
+                         </div>
+                        <div class="Volleyball">
+                            <input class="form-check-input" type="checkbox" name="volleyball" id="defaultCheck3" value="volleyball" formControlName="volleyball">
+                                <label class="form-check-label" for="defaultCheck3">
+                                    Volleyball
+                                </label>
+                                <span style="color: crimson;" *ngIf="volleyball && volleyball.invalid && volleyball.touched">Email is required </span>
+                        </div>
+                  </div>
+              </div>
+
+             <div class="col-lg-12">
+                <label for="inputAddress" class="form-label">Address:</label>
+                    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Apartment,floor" formControlName="address">
+                    <span style="color: crimson;" *ngIf="address && address.invalid && address.touched">Email is required </span>
+            </div>
+            <div class="col-md-6 ">
+                <div class="form-group">
+                    <label for="exampleFormControlFile1"> Image:</label>
+                        <input type="file" (change)="onChange($event)" name="image"  class="form-control-file mt-2" id="exampleFormControlFile1" formControlName="file"><br>
+                        <img class="mt-3 image" *ngIf="fileimage" src="{{fileimage}}" alt="" style="height: 50px;">
+                        <span style="color: crimson;" *ngIf="file && file.invalid && file.touched">Image is required </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>Birth Date: </label><br>
+                    <input type="date" name="date" class="mt-2" formControlName="date"><br>
+                    <span style="color: crimson;" *ngIf="date && date.invalid && date.touched">Email is required </span>
+
+            </div>
+            <div class="col-md-6">
+                <label>Favorite Color:</label><br>
+                <input [value]="color" class="mt-2" name="color" formControlName="color"
+                    [style.background]="color"
+                    [cpEyeDropper]="true"
+                    [cpSaveClickOutside]="true"
+                    (colorPickerChange)="onColorChange($event)"
+                    [(colorPicker)]="colors"/><br>
+                    <span style="color: crimson;" *ngIf="color && color.invalid && color.touched">Email is required </span>
+
+            </div>
+            
+            <div class="col-md-6">
+                <label>Status:</label>
+                <div class="form-check form-switch mt-2">
+                    <input class="form-check-input " type="checkbox" name="switch" id="flexSwitchCheckDefault" formControlName="switch">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                    <span style="color: crimson;" *ngIf="switch && switch.invalid && switch.touched">Email is required </span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="btn-group">
+                    <button type="submit" [disabled]="loginForm.invalid">Submit</button>
+                    
+                </div>
+            </div> 
+            
+          </form>
+    </div>

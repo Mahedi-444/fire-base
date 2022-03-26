@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sign In With Your Phone Number</h1>
+    <div class="main p-5">
+    <div [hidden]="user">
+
+        <label for="phone" class="phone">Country Code:</label>
+        <select  [(ngModel)]="phoneNumber.country" class="form-select" aria-label="Default select example">
+            <option selected>Conutry Code</option>
+            <option value="+91">+91</option>
+            <option value="+92">+92</option>
+            <option value="+93">+93</option>
+          </select>
+
+          <label for="phone" class="top">Phone Number:</label><br>
+
+          <input type="text" [(ngModel)]="phoneNumber.mobilenumber" class="input"  maxlength="10">
+
+    <div id="recaptcha-container" class="robot"></div>
+
+    
+
+        <button class="top-1 bg-success border-0" (click)="sendLoginCode()">SMS Text Login Code </button>
+
+        <div *ngIf="windowRef.confirmationResult">
+
+            <label for="code" class="enter">Enter Your Verification Code Here</label><br>
+            <input type="text" name="code" [(ngModel)]="verificationCode" class="input second"><br>
+
+            <button class="verify" (click)="verifyLoginCode()">Verify</button>
+
+        </div>
+
+
+
+    </div>
+
+    <div *ngIf="user" class="you">
+
+        You have Successfully Logged in With Your Phone Number!
+
+        UserId:{{user?.uid}}
+
+    </div>
+
+</div>
+
+
+
+
+</body>
+</html>

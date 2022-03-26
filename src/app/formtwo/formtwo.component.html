@@ -1,0 +1,46 @@
+<p>formtwo works!</p>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <table class="table table-success table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">User Name:</th>
+        <th scope="col">Password:</th>
+        <th scope="col">Email:</th>
+        <th scope="col">Mobile:</th>
+        <th scope="col">Gender:</th>
+        <th scope="col">Hobby</th>
+        <th scope="col">Address</th>
+        <th scope="col">Image</th>
+        <th scope="col">Birth Date:</th>
+        <th scope="col">Favorite Color:</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="getIdData">
+        <th scope="row">1</th>
+        <td>{{getIdData.username}}</td>
+        <td>{{getIdData.password}}</td>
+        <td>{{getIdData.email}}</td>
+        <td>{{getIdData.mobile}}</td>
+        <td>{{getIdData.radio}}</td>
+        <td>cricket:{{getIdData.cricket}}  Football:{{getIdData.football}} Volleyball:{{getIdData.volleyball}}</td>
+        <td>{{getIdData.address}}</td>
+        <td>
+      <img src="{{getIdData.file}}" alt="image" style="width: 50px;">
+        </td>
+        <td>{{getIdData.date}}</td>
+        <td>{{getIdData.color}}</td>
+        <td>{{getIdData.switch}}</td>
+        <td><i class="fa fa-trash delete text-danger fs-5" (click)="delete(queryParams)" aria-hidden="true"></i><br>
+        <i class="fa fa-pencil-square-o text-success fs-5" (click)="edit(queryParams)" aria-hidden="true"></i>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
